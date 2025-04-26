@@ -46,12 +46,15 @@ const DashboardStats: React.FC = () => {
   const attendanceStats = getAttendanceStats();
   const assignmentStats = getAssignmentStats();
 
-  const chartData = [
+  const attendanceChartData = [
     {
       name: 'Attendance',
       Present: attendanceStats?.present || 0,
       Total: attendanceStats?.total || 0,
     },
+  ];
+
+  const assignmentChartData = [
     {
       name: 'Assignments',
       Completed: assignmentStats?.completed || 0,
@@ -85,7 +88,7 @@ const DashboardStats: React.FC = () => {
         </div>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
+            <BarChart data={attendanceChartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
@@ -121,7 +124,7 @@ const DashboardStats: React.FC = () => {
         </div>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
+            <BarChart data={assignmentChartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
